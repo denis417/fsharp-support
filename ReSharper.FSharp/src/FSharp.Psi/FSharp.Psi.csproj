@@ -1,17 +1,73 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <PropertyGroup>
-    <TargetFramework>net461</TargetFramework>
     <RootNamespace>JetBrains.ReSharper.Plugins.FSharp.Psi</RootNamespace>
     <AssemblyName>JetBrains.ReSharper.Plugins.FSharp.Psi</AssemblyName>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
 
+  <ItemGroup>
+    <Reference Include="JetBrains.Build.Platform.DistributedCache, Version=1.0.0.0, Culture=neutral, PublicKeyToken=e920392f8e8a4845">
+      <HintPath>..\..\..\Packages\JetBrains.Build.Platform.DistributedCache.1.0.20200831.118\lib\netstandard2.0\JetBrains.Build.Platform.DistributedCache.dll</HintPath>
+    </Reference>
+    <Reference Include="JetBrains.Annotations, Version=2020.1.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325">
+      <HintPath>..\..\..\..\Packages\JetBrains.Annotations.2020.1.0\lib\net20\JetBrains.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="JetBrains.Lifetimes, Version=777.0.0.0, Culture=neutral, PublicKeyToken=3c74c1a6a8683340">
+      <HintPath>..\..\..\..\Packages\JetBrains.Lifetimes.2020.3.0-preview416\lib\net461\JetBrains.Lifetimes.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Win32.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\..\..\..\Packages\Microsoft.Win32.Primitives.4.3.0\lib\net46\Microsoft.Win32.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="NVelocity, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc">
+      <HintPath>..\..\..\..\Packages\NVelocity.1.0.3\lib\NVelocity.dll</HintPath>
+    </Reference>
+    <Reference Include="antlr.runtime, Version=2.7.7.1, Culture=neutral, PublicKeyToken=0f493c87b190d7e9">
+      <HintPath>..\..\..\..\Packages\Antlr2.Runtime.2.7.7.3\lib\antlr.runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=1.0.7447.30317, Culture=neutral, PublicKeyToken=af5372d9166ac06b">
+      <HintPath>..\..\..\..\Packages\JetBrains.SharpZipLib.Stripped.0.87.20200522.23\lib\net40\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
+      <HintPath>..\..\..\..\Packages\JetBrains.Toolset.RefAsm.Net461.NetStandard.2.0.20190130.182358\lib\net461\netstandard.dll</HintPath>
+    </Reference>
+    <Reference Include="JetBrains.RdFramework, Version=777.0.0.0, Culture=neutral, PublicKeyToken=3c74c1a6a8683340">
+      <HintPath>..\..\..\..\Packages\JetBrains.RdFramework.2020.3.0-preview416\lib\net461\JetBrains.RdFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="FSharp.Compiler.Service, Version=2020.1.0.0, Culture=neutral, PublicKeyToken=3099b8d9d20e74bf">
+      <HintPath>..\..\..\..\Packages\JetBrains.FSharp.Compiler.Service.2020.2.6\lib\netstandard2.0\FSharp.Compiler.Service.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FSharp.Core, Version=4.7.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\..\..\..\Packages\FSharp.Core.4.7.2\lib\netstandard2.0\FSharp.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <HintPath>..\..\..\..\Obj\Obj.ReSharperHost\Toolset.Prj\MNETFRRE.ASS\build\.NETFramework\v4.6.1\System.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Linq, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\..\..\..\Obj\Obj.ReSharperHost\Toolset.Prj\MNETFRRE.ASS\build\.NETFramework\v4.6.1\Facades\System.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
+      <HintPath>..\..\..\..\Packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Collections" />
+
+  </ItemGroup>
   <ItemGroup>
     <PsiLanguageNames Include="FSharp">
       <Visible>False</Visible>
     </PsiLanguageNames>
 
     <ParserGen Include="src\FSharp.psi" />
+    <CsLex Include="src\Parsing\Lexing\fsharpLexer.lex" References="$(ProductHomeDir)\Psi.Features\Tasks\CsLex\Unicode.lex" />
 
     <TokenGenerator Include="src\Parsing\FSharpTokens.xml">
       <OutputFile>src\Parsing\FSharpTokenType.Generated.cs</OutputFile>
@@ -21,15 +77,88 @@
     <Compile Update="Src\Parsing\FSharpTokenType.Generated.cs">
       <DependentUpon>FSharpTokens.xml</DependentUpon>
     </Compile>
+    
+    <Compile Include="**/*.cs"></Compile>
   </ItemGroup>
   
+  
   <ItemGroup>
+
+    <ProjectReference Include="..\..\..\..\Platform\Core\Ide\ProjectDocuments\ProjectDocuments.csproj" />
+
+    <ProjectReference Include="..\..\..\..\Platform\Core\Text\Documents\Documents.csproj" />
+
+    <ProjectReference Include="..\..\..\..\Psi.Features\Core\Psi\CSharp\Psi.CSharp.csproj" />
+
+    <ProjectReference Include="..\..\..\..\Psi.Features\Core\Services\_Core\Services.csproj" />
+
+    <ProjectReference Include="..\..\..\..\Psi.Features\src\Daemon\CSharp\Daemon.CSharp.csproj" />
+
+    <ProjectReference Include="..\..\..\..\Psi.Features\src\Daemon\Engine\Daemon.Engine.csproj">
+      <Project>{2016716f-f37b-4699-a26b-36a35242bea6}</Project>
+      <Name>Daemon.Engine</Name>
+    </ProjectReference>
+
+    <ProjectReference Include="..\..\..\..\Psi.Features\src\Daemon\_Core\Daemon.csproj" />
+
+    <ProjectReference Include="..\..\..\..\Psi.Features\Tasks\Build\Psi.Features.Tasks.Build.csproj" />
+
+    <ProjectReference Include="..\..\..\..\Psi.Features\Tasks\CsLex\CsLex.csproj" />
+    <ProjectReference Include="..\..\..\..\Psi.Features\Tasks\ErrorDescriptionGenerator\ErrorDescriptionGenerator.csproj" />
+    <ProjectReference Include="..\..\..\..\Psi.Features\Tasks\JavaScriptLibGenerator\JavaScriptLibGenerator.csproj" />
+    <ProjectReference Include="..\..\..\..\Psi.Features\Tasks\PsiGen.TokenGenerator\TokenGenerator.csproj" />
+    <ProjectReference Include="..\..\..\..\Psi.Features\Tasks\PsiGen\PsiGen.csproj" />
     <ProjectReference Include="..\FSharp.Common\FSharp.Common.fsproj" />
+    <ProjectReference Include="..\FSharp.ProjectModelBase\FSharp.ProjectModelBase.csproj">
+      <Project>{7211e0ce-4046-4ad9-b1e8-785f0e33199e}</Project>
+      <Name>FSharp.ProjectModelBase</Name>
+    </ProjectReference>
   </ItemGroup>
 
   <ItemGroup>
     <CsLex Include="src\Parsing\Lexing\fsharpLexer.lex" />
   </ItemGroup>
   
-  <Import Project="$(DotNetSdkPath)\Build\SubplatformReference.Psi.Features_src.Props" Condition="Exists('$(DotNetSdkPath)\Build\SubplatformReference.Psi.Features_src.Props')" />
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Platform\Core\Ide\Projects\Projects.csproj" />
+    <ProjectReference Include="..\..\..\..\Platform\Core\Shell\ComponentModel\ComponentModel.csproj" />
+    <ProjectReference Include="..\..\..\..\Platform\Core\Shell\Core\Core.csproj" />
+    <ProjectReference Include="..\..\..\..\Platform\Core\Shell\Shell\Shell.csproj" />
+    <ProjectReference Include="..\..\..\..\Platform\Core\Shell\Util\Util.csproj" />
+    <ProjectReference Include="..\..\..\..\Platform\RdProtocol\RdModel\RdModel.csproj" />
+    <ProjectReference Include="..\..\..\..\Platform\Core\Shell\Metadata\Metadata.csproj" />
+    <ProjectReference Include="..\..\..\..\Psi.Features\Core\Psi\_Core\Psi.csproj" />
+    <ProjectReference Include="..\..\..\..\Psi.Features\Core\Resources\Resources.csproj" />
+    <ProjectReference Include="..\..\..\..\Psi.Features\src\Features\RegExp\Features.RegExp.csproj" />
+    <ProjectReference Include="..\..\..\..\Psi.Features\Tasks\CsLex\CsLex.csproj" />
+    <ProjectReference Include="..\..\..\..\Psi.Features\Tasks\ErrorDescriptionGenerator\ErrorDescriptionGenerator.csproj" />
+    <ProjectReference Include="..\..\..\..\Psi.Features\Tasks\JavaScriptLibGenerator\JavaScriptLibGenerator.csproj" />
+    <ProjectReference Include="..\..\..\..\Psi.Features\Tasks\PsiGen.TokenGenerator\TokenGenerator.csproj" />
+    <ProjectReference Include="..\..\..\..\Psi.Features\Tasks\PsiGen\PsiGen.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Content Include="src\Parsing\Lexing\Unicode.lex" />
+  </ItemGroup>
+
+  <Import Project="..\..\..\..\Psi.Features\Tasks\PsiGen.TokenGenerator\TokenGenerator.Targets" />
+  <Import Project="..\..\..\..\Psi.Features\Tasks\PsiGen\PsiGen.Targets" />
+  <Import Project="..\..\..\..\Psi.Features\Tasks\ErrorDescriptionGenerator\ErrorsGen.Targets" Condition="" />
+  <Import Project="..\..\..\..\Psi.Features\Tasks\CsLex\CsLex.Targets" Condition="" />
+  <Import Project="..\..\..\..\Psi.Features\Tasks\JavaScriptLibGenerator\JsLibGen.Targets" Condition="" />
+  <Import Project="..\..\..\..\Psi.Features\Tasks\TypeScriptLibGenerator\TsLibGen.Targets" Condition="" />
+  <Import Project="..\..\..\..\Packages\JetBrains.Build.Platform.Tasks.ProxyToSolutionCompiledTask.2.0.20191021.1\build\ProxyToSolutionCompiledTask.Tasks" Condition="" />
+  
+<!--  <PropertyGroup>-->
+<!--    <ProductBinariesDir>/Users/denis.kuznetsov/Projects/dotnet-products/Bin.ReSharperHost</ProductBinariesDir>-->
+<!--    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>-->
+<!--    <WarningsNotAsErrors>$(WarningsNotAsErrors),162,618,1030,1701,1702,1570,1571,1572,1573,1574,1580,1581,1584,1587,1589,1590,1591,1592,1598,1591</WarningsNotAsErrors>-->
+<!--    <NoWarn>$(NoWarn),1591,1607,1685</NoWarn>-->
+
+<!--    <PsiGenToolsDir>$(ProductBinariesDir)</PsiGenToolsDir>-->
+<!--    <ParserGenOutputBase>$(ProductHomeDir)/Psi.Features/src/Psi/Gen</ParserGenOutputBase>-->
+<!--  </PropertyGroup>-->
+
+  <Import Project="$(MSBuildThisFileDirectory)ManagedProject.ReSharperHost.Generated.sln.Targets" />
+
 </Project>

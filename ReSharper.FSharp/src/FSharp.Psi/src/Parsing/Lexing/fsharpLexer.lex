@@ -68,7 +68,7 @@ WHITESPACE=((" ")+)
 TAB=((\t)+)
 ANYWHITE=({WHITESPACE}|{TAB})
 
-%include PsiTasks/Unicode.lex
+%include Unicode.lex
 
 NEW_LINE=(\n|\r\n)
 LINE_COMMENT=(\/\/([^\n\r])*)

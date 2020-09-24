@@ -268,7 +268,7 @@ tasks {
 
     create("prepare") {
         group = riderFSharpTargetsGroup
-        dependsOn("rdgen", "writeNuGetConfig", "writeDotNetSdkPathProps")
+        dependsOn("rdgen")
     }
 
     create("buildReSharperPlugin") {
