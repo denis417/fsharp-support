@@ -1,11 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
-  <Import Project="../../Directory.Build.props"/>
+<!--  <Import Project="../../Directory.Build.props" />-->
 
   <PropertyGroup>
 <!--    <TargetFramework>net461</TargetFramework>-->
     <DisableImplicitFSharpCoreReference>true</DisableImplicitFSharpCoreReference>
     <RootNamespace>JetBrains.ReSharper.Plugins.FSharp</RootNamespace>
     <AssemblyName>JetBrains.ReSharper.Plugins.FSharp.Common</AssemblyName>
+    <OutputType>Library</OutputType>
   </PropertyGroup>
   
   <ItemGroup>
@@ -21,6 +23,10 @@
     <Reference Include="JetBrains.Annotations, Version=2020.1.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325">
       <HintPath>..\..\..\..\..\..\.nuget\packages\jetbrains.annotations\2020.1.0\lib\net20\JetBrains.Annotations.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Build.Tasks.v4.0, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+<!--      <HintPath>..\..\..\..\Obj\Obj.ReSharperHost\Toolset.Prj\MNETFRRE.ASS\build\.NETFramework\v4.6.1\Microsoft.Build.Tasks.v4.0.dll</HintPath>-->
+      <HintPath>../../../../Obj/Obj.ReSharperHost/Toolset.Prj/MNETFRRE.ASS/build/.NETFramework/v4.6.1/Microsoft.Build.Tasks.v4.0.dll</HintPath>
+    </Reference>
     <Reference Include="netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
       <HintPath>..\..\..\..\Packages\JetBrains.Toolset.RefAsm.Net461.NetStandard.2.0.20190130.182358\lib\net461\netstandard.dll</HintPath>
     </Reference>
@@ -31,6 +37,9 @@
   </ItemGroup>
   
   <ItemGroup>
+    <Reference Include="System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <HintPath>..\..\..\..\Obj\Obj.ReSharperHost\Toolset.Prj\MNETFRRE.ASS\build\.NETFramework\v4.6.1\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Linq, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <HintPath>..\..\..\..\Obj\Obj.ReSharperHost\Toolset.Prj\MNETFRRE.ASS\build\.NETFramework\v4.6.1\Facades\System.Linq.dll</HintPath>
@@ -84,10 +93,11 @@
     <Compile Include="src\PaketRestoreTargetsAnalyzer.fs" />
   </ItemGroup>
 
-<!--  <ItemGroup>-->
+  <ItemGroup>
 <!--    <PackageReference Include="FSharp.Core" Version="$(FSharpCoreVersion)" />-->
 <!--    <PackageReference Include="JetBrains.FSharp.Compiler.Service" Version="$(FSharpCompilerServiceVersion)" />-->
-<!--  </ItemGroup>-->
+    <PackageReference Include="FSharp.Compiler.Tools" Version="10.2.3" />
+  </ItemGroup>
   
 <!--  <PropertyGroup>-->
 <!--    <FSharpCoreXmlDocRelativePath>fsharp.core\$(FSharpCoreVersion)\lib\net45\FSharp.Core.xml</FSharpCoreXmlDocRelativePath>-->

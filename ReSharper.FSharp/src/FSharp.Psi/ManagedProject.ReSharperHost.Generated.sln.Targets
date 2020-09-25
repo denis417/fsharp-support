@@ -67,7 +67,7 @@
     <OutDir Condition="'$(IsOutputPathInSeparateFolders)' == 'True'">$(ProductBinariesDir)\FSHPROJMODB.MOD\</OutDir>
     <OutputPath Condition="'$(IsOutputPathInSeparateFolders)' != 'True'">$(ProductBinariesDir)\</OutputPath>
     <OutputPath Condition="'$(IsOutputPathInSeparateFolders)' == 'True'">$(ProductBinariesDir)\FSHPROJMODB.MOD\</OutputPath>
-    <PathMap>C:\Users\denis\RiderProjects\dotnet-products=/Product.Root</PathMap>
+    <PathMap>/Users/denis.kuznetsov/Projects/dotnet-products=/Product.Root</PathMap>
     <PostBuildEvent></PostBuildEvent>
     <PreBuildEvent></PreBuildEvent>
     <Prefer32Bit>False</Prefer32Bit>
@@ -95,7 +95,7 @@
     <PsiGenToolsDir>$(ProductBinariesDir)\</PsiGenToolsDir>
     <PsiTasksRemoteCacheUrl>https://temporary-files-cache.labs.jb.gg/cache/</PsiTasksRemoteCacheUrl>
     
-    <WarningsNotAsErrors>0162; 0419; 0612; 0618; 0649; 1572; 1573; 1574; 1587; 1591; 1712; $(WarningsNotAsErrors);</WarningsNotAsErrors>
+    <WarningsNotAsErrors>0162; 0419; 0612; 0618; 0649; 1572; 1573; 1574; 1587; 1591; 1712; 0675 $(WarningsNotAsErrors);</WarningsNotAsErrors>
   </PropertyGroup>
   <!--—-->
   <!--—-->

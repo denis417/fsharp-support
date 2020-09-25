@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <PropertyGroup>
     <TargetFramework>net461</TargetFramework>
     <DisableImplicitFSharpCoreReference>true</DisableImplicitFSharpCoreReference>
@@ -205,21 +205,6 @@
     <Compile Include="src\FSharpTypingAssist.fs" />
     <Compile Include="src\ZoneMarker.fs" />
   </ItemGroup>
-  
-  <ItemGroup>
-    <Reference Include="NuGet.Versioning, Version=5.7.0.7, Culture=neutral, PublicKeyToken=5aaa11a165479571">
-      <HintPath>..\..\..\..\Packages\JetBrains.NuGet.Versioning.5.7.20200831.40\lib\net461\NuGet.Versioning.dll</HintPath>
-    </Reference>
-    <Reference Include="NuGet.Packaging, Version=5.7.0.7, Culture=neutral, PublicKeyToken=5aaa11a165479571">
-      <HintPath>..\..\..\..\Packages\JetBrains.NuGet.Packaging.5.7.20200831.40\lib\net461\NuGet.Packaging.dll</HintPath>
-    </Reference>
-    <Reference Include="JetBrains.RdFramework, Version=777.0.0.0, Culture=neutral, PublicKeyToken=3c74c1a6a8683340">
-      <HintPath>..\..\..\..\Packages\JetBrains.RdFramework.2020.3.0-preview416\lib\net461\JetBrains.RdFramework.dll</HintPath>
-    </Reference>,
-    <Reference Include="JetBrains.Lifetimes, Version=777.0.0.0, Culture=neutral, PublicKeyToken=3c74c1a6a8683340">
-      <HintPath>..\..\..\..\Packages\JetBrains.Lifetimes.2020.3.0-preview416\lib\net461\JetBrains.Lifetimes.dll</HintPath>
-    </Reference>
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="FSharp.Core" Version="$(FSharpCoreVersion)" />
@@ -247,5 +232,6 @@
   <Import Project="..\..\..\..\Psi.Features\Tasks\PsiGen.TokenGenerator\TokenGenerator.Targets" Condition="" />
   <Import Project="..\..\..\..\Psi.Features\Tasks\PsiGen\PsiGen.Targets" Condition="" />
   <Import Project="..\..\..\..\Psi.Features\Tasks\TypeScriptLibGenerator\TsLibGen.Targets" Condition="" />
-  
+  <Import Project="$(MSBuildThisFileDirectory)ManagedProject.ReSharperHost.Generated.sln.Targets" />
+
 </Project>

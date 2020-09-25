@@ -3,6 +3,7 @@
     <RootNamespace>JetBrains.ReSharper.Plugins.FSharp.Psi</RootNamespace>
     <AssemblyName>JetBrains.ReSharper.Plugins.FSharp.Psi</AssemblyName>
     <LangVersion>latest</LangVersion>
+    <OutputType>Library</OutputType>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>bin\Debug\</OutputPath>
@@ -78,7 +79,7 @@
       <DependentUpon>FSharpTokens.xml</DependentUpon>
     </Compile>
     
-    <Compile Include="**/*.cs"></Compile>
+    <Compile Include="**/*.cs"/>
   </ItemGroup>
   
   
